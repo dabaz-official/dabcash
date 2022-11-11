@@ -1,9 +1,9 @@
 import Head from 'next/head';
-import FeatureTabs from '../components/Layout/FeatureTabs';
 import { starter, premium } from '../components/data/pricing';
 import { CheckBadgeIcon } from '@heroicons/react/24/outline'
 import { leftTwo, rightTwo } from '../components/data/faq';
 import Header from '../components/Layout/Header';
+import FeatureTabs from '../components/Layout/FeatureTabs';
 import Footer from '../components/layout/Footer';
 
 export default function Home() {
