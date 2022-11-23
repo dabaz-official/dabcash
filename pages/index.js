@@ -3,6 +3,7 @@ import BackgroundSvg from '../components/BackgroundSvg'
 import Navbar from '../components/Navbar'
 import { BoltIcon, DevicePhoneMobileIcon, GlobeAltIcon, CreditCardIcon } from '@heroicons/react/24/outline'
 import Footer from '../components/Footer'
+import GetStarted from '../components/GetStarted'
 
 const features = [
   {
@@ -69,15 +70,7 @@ export default function Home() {
                   DabCash is a simple web application that provides customers with functions of expenses management. Customers can track and see their expenses daily and monthly.
                 </p>
                 <div className="mt-8 flex gap-x-4 sm:justify-center">
-                  <a
-                    href="#"
-                    className="inline-block rounded-xl bg-violet-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-violet-600 hover:bg-violet-700 hover:ring-violet-700 transition"
-                  >
-                    Get started
-                    <span className="text-violet-200 ml-2" aria-hidden="true">
-                      &rarr;
-                    </span>
-                  </a>
+                  <GetStarted />
                   <a
                     href="#pricing"
                     className="inline-block rounded-xl px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20 transition"
