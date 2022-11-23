@@ -201,7 +201,8 @@ export default function Home() {
                     <div className="mt-6">
                       <div className="rounded-md shadow">
                         <a
-                          href="#"
+                          href="https://paypal.me/dabazofficial"
+                          target="_blank"
                           className="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-violet-600 hover:bg-violet-700 transition"
                         >
                           Get Access
