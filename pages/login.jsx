@@ -1,38 +1,41 @@
 import React from 'react'
 import { useSession, signIn, signOut } from 'next-auth/react'
 
-const Login = () => {
-  const { data: session } = useSession()
+const login = () => {
+  const { data: session } = useSession();
 
   if (session) {
     return (
-      <div>
-        <p>
+      <>
+        <p
+          className="inline-block px-3 py-1.5 text-sm font-medium leading-6 text-gray-900 shadow-sm transition"
+        >
           Welcome, {session.user.name}
         </p>
+        <a
+          href="/dashboard"
+          className="inline-block rounded-xl px-3 py-1.5 text-sm font-medium leading-6 text-white bg-violet-600 shadow-sm ring-1 ring-gray-900/10 hover:ring-gray-900/20 hover:bg-violet-700 transition"
+        >
+          Dashboard
+        </a>
         <button
           onClick={() => signOut()}
-          className=""
+          className="inline-block rounded-xl px-3 py-1.5 text-sm font-medium leading-6 text-gray-900 shadow-sm ring-1 ring-gray-900/10 hover:ring-gray-900/20 transition"
         >
           Sign out
         </button>
-      </div>
+      </>
     )
   } else {
     return (
-      <div>
-        <p>
-          You&apos;re not sign in.  
-        </p>
-        <button
-          onClick={() => signIn()}
-          className=""
-        >
-          Sign in
-        </button>
-      </div>
+      <button
+        onClick={() => signIn()}
+        className="inline-block rounded-xl px-3 py-1.5 text-sm font-medium leading-6 text-white bg-violet-600 shadow-sm ring-1 ring-gray-900/10 hover:ring-gray-900/20 hover:bg-violet-700 transition"
+      >
+        Get started
+      </button>
     )
   }
 }
 
-export default Login
+export default Login()
