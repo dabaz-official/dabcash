@@ -7,9 +7,9 @@ import GetStarted from '../components/GetStarted'
 
 const features = [
   {
-    name: 'Competitive exchange rates',
+    name: 'Global currencies',
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+      'We support so many currencies that are used in most countries as an official currency.',
     icon: GlobeAltIcon,
   },
   {
@@ -19,7 +19,7 @@ const features = [
     icon: CreditCardIcon,
   },
   {
-    name: 'Expenses are instantly calculated',
+    name: 'Fast calculations',
     description:
       'If you add the records of expenses, the expenses will be instantly calculated. We use Turbopack* to ensure the speed of calculations.',
     icon: BoltIcon,
