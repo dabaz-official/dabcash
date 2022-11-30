@@ -16,7 +16,7 @@ const LoginButton = () => {
     return (
       <Menu as="div" className="ml-3 relative">
         <div>
-          <Menu.Button className="bg-white flex text-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <Menu.Button className="bg-white flex text-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500">
             <span className="sr-only">Open user menu</span>
             <p className="text-black underline underline-offset-2">DabAZ</p>
           </Menu.Button>   
@@ -51,10 +51,11 @@ const LoginButton = () => {
     )  
   } else {
     return (
-      <div className="ml-3 relative">
+      <div className="ml-3 relative flex">
+        <p className="text-sm text-black">You&apos;re not logged in.</p>
         <button 
           onClick={() => signIn()}
-          className="bg-white flex text-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          className="bg-white flex text-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 ml-2"
         >
           <span className="sr-only">Log in</span>
           <p className="text-black underline underline-offset-2">Log in</p>
