@@ -1,10 +1,10 @@
 import Head from 'next/head'
-import BackgroundSvg from '../components/BackgroundSvg'
-import Navbar from '../components/Navbar'
+import BackgroundSvg from '../components/home/BackgroundSvg'
+import Navbar from '../components/home/Navbar'
 import { BoltIcon, DevicePhoneMobileIcon, GlobeAltIcon, CreditCardIcon } from '@heroicons/react/24/outline'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
-import Footer from '../components/Footer'
-import GetStarted from '../components/GetStarted'
+import Footer from '../components/home/Footer'
+import GetStarted from '../components/home/GetStarted'
 
 const features = [
   {
