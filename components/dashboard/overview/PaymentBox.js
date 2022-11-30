@@ -1,42 +1,7 @@
 import { Fragment, useState } from 'react'
 import { Combobox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
-
-const payments = [
-  { 
-    id: 1,
-    name: 'Cash' 
-  },
-  { 
-    id: 2,
-    name: 'Credit Card' 
-  },
-  { 
-    id: 3,
-    name: 'Debit Card' 
-  },
-  { 
-    id: 4,
-    name: 'Paypal' 
-  },
-  { 
-    id: 5,
-    name: 'Apple Pay' 
-  },
-  { 
-    id: 6,
-    name: 'Cash App' 
-  },
-]
-
-const people = [
-  { id: 1, name: 'Wade Cooper' },
-  { id: 2, name: 'Arlene Mccoy' },
-  { id: 3, name: 'Devon Webb' },
-  { id: 4, name: 'Tom Cook' },
-  { id: 5, name: 'Tanya Fox' },
-  { id: 6, name: 'Hellen Schmidt' },
-]
+import { payments } from '../../../data/payments'
 
 export default function PaymentBox() {
   const [selected, setSelected] = useState(payments[0])

@@ -25,14 +25,6 @@ const actions = [
     iconBackground: 'bg-violet-50',
     description: 'Look through all your accounts, available for PayPal, Stripe, and more.',
   },
-  {
-    title: 'Cards',
-    href: '/dashboard/cards',
-    icon: CreditCardIcon,
-    iconForeground: 'text-violet-700',
-    iconBackground: 'bg-violet-50',
-    description: "Look through all your cards, whether it's a credit or a debit card.",
-  },
   { 
     title: 'Settings', 
     href: '/dashboard/settings', 
@@ -40,14 +32,6 @@ const actions = [
     iconForeground: 'text-violet-700',
     iconBackground: 'bg-violet-50',
     description: 'Change your settings, manage your accounts and cards, or change your password.',
-  },
-  {
-    title: 'Privacy',
-    href: '/privacy',
-    icon: DocumentDuplicateIcon,
-    iconForeground: 'text-violet-700',
-    iconBackground: 'bg-violet-50',
-    description: "Learn about our privacy policy.",
   },
 ]
 

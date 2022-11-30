@@ -3,12 +3,12 @@ import { Fragment } from 'react'
 import { signOut } from 'next-auth/react'
 import DashboardNavigations from './dashboard/DashboardNavigations'
 import OverviewSection from './overview/OverviewSection'
+import AccountsSection from './accounts/AccountsSection'
 
 const navigation = [
   { name: 'Dashboard' },
   { name: 'Overview' },
   { name: 'Accounts' },
-  { name: 'Cards' },
 ]
 
 function classNames(...classes) {
@@ -93,8 +93,9 @@ export default function DashboardNavbar() {
         <Tab.Panel>
           <OverviewSection />
         </Tab.Panel>
-        <Tab.Panel>Thats him</Tab.Panel>
-        <Tab.Panel>Thats DabAZ</Tab.Panel>
+        <Tab.Panel>
+          <AccountsSection />
+        </Tab.Panel>
       </Tab.Panels>
     </Tab.Group>
   )
