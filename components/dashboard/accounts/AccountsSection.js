@@ -1,4 +1,9 @@
+import React from 'react'
+import { Dialog, Transition } from '@headlessui/react'
+import { Fragment, useState } from 'react'
 import { PencilSquareIcon } from '@heroicons/react/24/solid'
+import { XMarkIcon } from '@heroicons/react/24/outline'
+import { useForm } from 'react-hook-form'
 
 const cards = [
   {
@@ -77,6 +82,25 @@ const accounts = [
 ]
 
 export default function AccountsSection() {
+  const { register, watch, formState: { errors }, handleSubmit } = useForm();
+  const watchAllFields = watch();
+  React.useEffect(() => {
+    const subscription = watch((value, { name, type }) => console.log(value, name, type));
+    return () => subscription.unsubscribe();
+  }, [watch]);
+
+  const onSubmit = data => console.log(data);
+
+  let [isOpen, setIsOpen] = useState(false)
+
+  function closeModal() {
+    setIsOpen(false)
+  }
+
+  function openModal() {
+    setIsOpen(true)
+  }
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="my-8">
@@ -117,14 +141,107 @@ export default function AccountsSection() {
             <div>
             <div className="-mt-px flex">
                 <div className="w-0 flex-1 flex">
-                  <a
-                    href="#"
+                  <button
+                    onClick={openModal}
                     className="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500"
                   >
                     <PencilSquareIcon className="w-5 h-5 text-gray-400" aria-hidden="true" />
                     <span className="ml-3">Edit</span>
-                  </a>
+                  </button>
                 </div>
+                <Transition appear show={isOpen} as={Fragment}>
+                  <Dialog as="div" className="relative z-10" onClose={closeModal}>
+                    <Transition.Child
+                      as={Fragment}
+                      enter="ease-out duration-300"
+                      enterFrom="opacity-0"
+                      enterTo="opacity-100"
+                      leave="ease-in duration-200"
+                      leaveFrom="opacity-100"
+                      leaveTo="opacity-0"
+                    >
+                      <div className="fixed inset-0 bg-black bg-opacity-25" />
+                    </Transition.Child>
+
+                    <div className="fixed inset-0 overflow-y-auto">
+                      <div className="flex min-h-full items-center justify-center p-4 text-center">
+                        <Transition.Child
+                          as={Fragment}
+                          enter="ease-out duration-300"
+                          enterFrom="opacity-0 scale-95"
+                          enterTo="opacity-100 scale-100"
+                          leave="ease-in duration-200"
+                          leaveFrom="opacity-100 scale-100"
+                          leaveTo="opacity-0 scale-95"
+                        >
+                          <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-3xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                            <Dialog.Title
+                              as="div"
+                              className="flex justify-between align-middle"
+                            >
+                              <h3 className="text-xl font-medium leading-6 text-gray-900 justify-start">
+                                Set a balance
+                              </h3>
+                              <button
+                                onClick={closeModal}
+                                className="border-2 border-violet-300 rounded-lg"
+                              >
+                                <XMarkIcon className="h-5 w-5 m-1" />
+                              </button>
+                            </Dialog.Title>
+                            <div className="flex min-h-full py-2">
+                              <form className="" action="submit" method="POST">
+                                <div className="mt-2 space-y-2">
+                                  <div>
+                                    <label htmlFor="balance" className="block text-sm font-medium text-gray-700">
+                                      Balance
+                                    </label>
+                                    <div className="relative mt-1 rounded-xl shadow-sm">
+                                      <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                        <span className="text-gray-500 sm:text-sm">$</span>
+                                      </div>
+                                      <input
+                                        type="text"
+                                        name="balance"
+                                        id="balance"
+                                        className="block w-full rounded-xl border-gray-300 pl-7 pr-12 focus:border-violet-500 focus:ring-violet-500 sm:text-sm"
+                                        placeholder="0.00"
+                                        required
+                                      />
+                                      <div className="absolute inset-y-0 right-0 flex items-center">
+                                        <label htmlFor="currency" className="sr-only">
+                                          Currency
+                                        </label>
+                                        <select
+                                          id="currency"
+                                          name="currency"
+                                          className="h-full rounded-xl border-transparent bg-transparent py-0 pl-2 pr-7 text-gray-500 focus:border-violet-500 focus:ring-violet-500 sm:text-sm"
+                                        >
+                                          <option>USD</option>
+                                          <option>CAD</option>
+                                          <option>EUR</option>
+                                        </select>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="mt-4">
+                                  <button
+                                    type="button"
+                                    className="-z-50 inline-flex justify-center rounded-xl border border-transparent bg-violet-100 px-4 py-2 text-sm font-medium text-violet-900 hover:bg-violet-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 transition"
+                                    onClick={closeModal}
+                                  >
+                                    Done
+                                  </button>
+                                </div>
+                              </form>
+                            </div>
+                          </Dialog.Panel>
+                        </Transition.Child>
+                      </div>
+                    </div>
+                  </Dialog>
+                </Transition>
               </div>
             </div>
           </li>
@@ -161,14 +278,107 @@ export default function AccountsSection() {
             <div>
               <div className="-mt-px flex">
                 <div className="w-0 flex-1 flex">
-                  <a
-                    href="#"
+                  <button
+                    onClick={openModal}
                     className="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500"
                   >
                     <PencilSquareIcon className="w-5 h-5 text-gray-400" aria-hidden="true" />
                     <span className="ml-3">Edit</span>
-                  </a>
+                  </button>
                 </div>
+                <Transition appear show={isOpen} as={Fragment}>
+                  <Dialog as="div" className="relative z-10" onClose={closeModal}>
+                    <Transition.Child
+                      as={Fragment}
+                      enter="ease-out duration-300"
+                      enterFrom="opacity-0"
+                      enterTo="opacity-100"
+                      leave="ease-in duration-200"
+                      leaveFrom="opacity-100"
+                      leaveTo="opacity-0"
+                    >
+                      <div className="fixed inset-0 bg-black bg-opacity-25" />
+                    </Transition.Child>
+
+                    <div className="fixed inset-0 overflow-y-auto">
+                      <div className="flex min-h-full items-center justify-center p-4 text-center">
+                        <Transition.Child
+                          as={Fragment}
+                          enter="ease-out duration-300"
+                          enterFrom="opacity-0 scale-95"
+                          enterTo="opacity-100 scale-100"
+                          leave="ease-in duration-200"
+                          leaveFrom="opacity-100 scale-100"
+                          leaveTo="opacity-0 scale-95"
+                        >
+                          <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-3xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                            <Dialog.Title
+                              as="div"
+                              className="flex justify-between align-middle"
+                            >
+                              <h3 className="text-xl font-medium leading-6 text-gray-900 justify-start">
+                                Set a balance
+                              </h3>
+                              <button
+                                onClick={closeModal}
+                                className="border-2 border-violet-300 rounded-lg"
+                              >
+                                <XMarkIcon className="h-5 w-5 m-1" />
+                              </button>
+                            </Dialog.Title>
+                            <div className="flex min-h-full py-2">
+                              <form className="" action="submit" method="POST">
+                                <div className="mt-2 space-y-2">
+                                  <div>
+                                    <label htmlFor="balance" className="block text-sm font-medium text-gray-700">
+                                      Balance
+                                    </label>
+                                    <div className="relative mt-1 rounded-xl shadow-sm">
+                                      <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                        <span className="text-gray-500 sm:text-sm">$</span>
+                                      </div>
+                                      <input
+                                        type="text"
+                                        name="balance"
+                                        id="balance"
+                                        className="block w-full rounded-xl border-gray-300 pl-7 pr-12 focus:border-violet-500 focus:ring-violet-500 sm:text-sm"
+                                        placeholder="0.00"
+                                        required
+                                      />
+                                      <div className="absolute inset-y-0 right-0 flex items-center">
+                                        <label htmlFor="currency" className="sr-only">
+                                          Currency
+                                        </label>
+                                        <select
+                                          id="currency"
+                                          name="currency"
+                                          className="h-full rounded-xl border-transparent bg-transparent py-0 pl-2 pr-7 text-gray-500 focus:border-violet-500 focus:ring-violet-500 sm:text-sm"
+                                        >
+                                          <option>USD</option>
+                                          <option>CAD</option>
+                                          <option>EUR</option>
+                                        </select>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="mt-4">
+                                  <button
+                                    type="button"
+                                    className="-z-50 inline-flex justify-center rounded-xl border border-transparent bg-violet-100 px-4 py-2 text-sm font-medium text-violet-900 hover:bg-violet-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 transition"
+                                    onClick={closeModal}
+                                  >
+                                    Done
+                                  </button>
+                                </div>
+                              </form>
+                            </div>
+                          </Dialog.Panel>
+                        </Transition.Child>
+                      </div>
+                    </div>
+                  </Dialog>
+                </Transition>
               </div>
             </div>
           </li>
